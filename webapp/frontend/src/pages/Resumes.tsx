@@ -104,21 +104,21 @@ function ResumeCard({
             <button
               type="button"
               onClick={onTogglePreview}
-              className="text-sm px-3 py-1.5 bg-surface border border-border rounded-lg text-text-secondary hover:text-text-primary hover:border-primary-500/30 transition-colors"
+              className="text-sm px-3 py-1.5 bg-surface border border-border rounded-lg text-text-secondary hover:text-text-primary hover:border-primary-300 transition-colors"
             >
               {expanded ? 'Hide Preview' : 'Preview'}
             </button>
           )}
           <a
             href={`/api/resume/download/${r.tex}`}
-            className="text-sm px-3 py-1.5 bg-surface border border-border rounded-lg text-text-secondary hover:text-text-primary hover:border-primary-500/30 transition-colors"
+            className="text-sm px-3 py-1.5 bg-surface border border-border rounded-lg text-text-secondary hover:text-text-primary hover:border-primary-300 transition-colors"
           >
             .tex
           </a>
           {r.has_pdf && (
             <a
               href={`/api/resume/download/${r.tex.replace('.tex', '.pdf')}`}
-              className="text-sm px-3 py-1.5 bg-primary-600/20 border border-primary-600/30 rounded-lg text-primary-400 hover:bg-primary-600/30 transition-colors"
+              className="text-sm px-3 py-1.5 bg-primary-50 border border-primary-200 rounded-lg text-primary-600 hover:bg-primary-100 transition-colors"
             >
               .pdf
             </a>

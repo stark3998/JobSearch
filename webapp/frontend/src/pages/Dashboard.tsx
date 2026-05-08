@@ -42,7 +42,7 @@ export default function Dashboard() {
         <StatCard label="Shortlisted" value={stats.shortlisted} color="text-tier-shortlist" />
         <StatCard label="Consider" value={stats.consider} color="text-tier-consider" />
         <StatCard label="Discarded" value={stats.discarded} color="text-tier-discard" />
-        <StatCard label="Analyzed" value={stats.with_analysis} color="text-primary-400" />
+        <StatCard label="Analyzed" value={stats.with_analysis} color="text-primary-600" />
         <StatCard label="Avg Score" value={stats.avg_score} sub={`${stats.remote_count} remote`} />
       </div>
 
@@ -71,7 +71,7 @@ export default function Dashboard() {
             {archetypeEntries.map(([name, count]) => (
               <div key={name} className="flex justify-between items-center">
                 <span className="text-sm truncate mr-2">{name}</span>
-                <span className="text-sm font-mono text-primary-400">{count}</span>
+                <span className="text-sm font-mono text-primary-600">{count}</span>
               </div>
             ))}
             {archetypeEntries.length === 0 && <p className="text-sm text-text-secondary">No data</p>}
@@ -84,7 +84,7 @@ export default function Dashboard() {
             {Object.entries(stats.boards_breakdown).map(([board, count]) => (
               <div key={board} className="flex justify-between items-center">
                 <span className="text-sm capitalize">{board}</span>
-                <span className="text-sm font-mono text-primary-400">{count}</span>
+                <span className="text-sm font-mono text-primary-600">{count}</span>
               </div>
             ))}
           </div>
@@ -94,7 +94,7 @@ export default function Dashboard() {
       <div className="bg-surface-card rounded-xl p-5 border border-border">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-sm font-semibold text-text-secondary uppercase tracking-wider">Top Companies</h2>
-          <Link to="/jobs" className="text-xs text-primary-400 hover:text-primary-300">
+          <Link to="/jobs" className="text-xs text-primary-600 hover:text-primary-500">
             View all jobs →
           </Link>
         </div>
@@ -112,7 +112,7 @@ export default function Dashboard() {
                 <tr key={c.name} className="border-b border-border/50 hover:bg-surface-hover/50">
                   <td className="py-2.5 pr-4 font-medium">{c.name}</td>
                   <td className="py-2.5 px-4 text-right font-mono">{c.count}</td>
-                  <td className="py-2.5 text-right font-mono text-primary-400">{c.avg_score}</td>
+                  <td className="py-2.5 text-right font-mono text-primary-600">{c.avg_score}</td>
                 </tr>
               ))}
             </tbody>

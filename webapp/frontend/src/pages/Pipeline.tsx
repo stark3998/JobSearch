@@ -63,11 +63,11 @@ export default function Pipeline() {
       <h1 className="text-2xl font-bold mb-6">Pipeline Control</h1>
 
       {status?.running && (
-        <div className="bg-primary-600/10 border border-primary-600/30 rounded-xl p-5 mb-6">
+        <div className="bg-primary-50 border border-primary-200 rounded-xl p-5 mb-6">
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 bg-primary-400 rounded-full animate-pulse" />
             <div>
-              <p className="font-medium text-primary-400">Pipeline Running</p>
+              <p className="font-medium text-primary-600">Pipeline Running</p>
               <p className="text-sm text-text-secondary">
                 Step: {status.step || '...'} — {status.progress || 'Working...'}
               </p>
@@ -110,8 +110,8 @@ export default function Pipeline() {
                 onClick={() => toggleBoard(b)}
                 className={`text-sm px-3 py-1.5 rounded-lg border transition-colors capitalize ${
                   selectedBoards.includes(b)
-                    ? 'bg-primary-600/20 text-primary-400 border-primary-600/30'
-                    : 'bg-surface text-text-secondary border-border hover:border-primary-600/30'
+                    ? 'bg-primary-50 text-primary-600 border-primary-200'
+                    : 'bg-surface text-text-secondary border-border hover:border-primary-300'
                 }`}
               >
                 {b.replace('_', ' ')}
@@ -129,8 +129,8 @@ export default function Pipeline() {
                 onClick={() => toggleArchetype(a.key)}
                 className={`text-sm px-3 py-1.5 rounded-lg border transition-colors ${
                   selectedArchetypes.includes(a.key)
-                    ? 'bg-primary-600/20 text-primary-400 border-primary-600/30'
-                    : 'bg-surface text-text-secondary border-border hover:border-primary-600/30'
+                    ? 'bg-primary-50 text-primary-600 border-primary-200'
+                    : 'bg-surface text-text-secondary border-border hover:border-primary-300'
                 }`}
               >
                 {a.label}
@@ -169,7 +169,7 @@ export default function Pipeline() {
           <button
             onClick={handleRun}
             disabled={status?.running || selectedBoards.length === 0 || selectedArchetypes.length === 0}
-            className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-600/30 disabled:cursor-not-allowed text-white font-medium py-2.5 rounded-lg transition-colors"
+            className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-200 disabled:cursor-not-allowed text-white font-medium py-2.5 rounded-lg transition-colors"
           >
             {status?.running ? 'Running...' : 'Start Pipeline'}
           </button>

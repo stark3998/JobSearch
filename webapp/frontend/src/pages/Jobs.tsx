@@ -182,7 +182,7 @@ function JobRow({ job }: { job: Job }) {
   return (
     <tr className="border-b border-border/50 hover:bg-surface-hover/50 transition-colors">
       <td className="py-3 px-4">
-        <span className="font-mono font-bold text-primary-400">{job.relevance_score}</span>
+        <span className="font-mono font-bold text-primary-600">{job.relevance_score}</span>
       </td>
       <td className="py-3 px-4">
         <span className={`text-xs px-2 py-0.5 rounded-full border font-medium ${tierClass}`}>
@@ -191,7 +191,7 @@ function JobRow({ job }: { job: Job }) {
       </td>
       <td className="py-3 px-4 font-medium max-w-[150px] truncate">{job.company}</td>
       <td className="py-3 px-4 max-w-[200px] truncate">
-        <Link to={`/jobs/${job.id}`} className="text-primary-400 hover:text-primary-300 hover:underline">
+        <Link to={`/jobs/${job.id}`} className="text-primary-600 hover:text-primary-500 hover:underline">
           {job.title}
         </Link>
       </td>
@@ -200,7 +200,7 @@ function JobRow({ job }: { job: Job }) {
         {job.is_remote && <span className="ml-1 text-tier-shortlist">(Remote)</span>}
       </td>
       <td className="py-3 px-4">
-        <span className="text-xs bg-primary-600/10 text-primary-300 px-2 py-0.5 rounded">
+        <span className="text-xs bg-primary-50 text-primary-700 px-2 py-0.5 rounded">
           {ARCHETYPE_SHORT[job.search_archetype || ''] || job.search_archetype || '—'}
         </span>
       </td>
@@ -214,7 +214,7 @@ function JobRow({ job }: { job: Job }) {
       </td>
       <td className="py-3 px-4 text-center">
         {job.job_url && (
-          <a href={job.job_url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary-400 hover:text-primary-300">
+          <a href={job.job_url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary-600 hover:text-primary-500">
             Apply
           </a>
         )}

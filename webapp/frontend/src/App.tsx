@@ -18,7 +18,7 @@ export default function App() {
       <div className="flex h-screen">
         <nav className="w-56 bg-surface-card border-r border-border flex flex-col shrink-0">
           <div className="p-5 border-b border-border">
-            <h1 className="text-lg font-bold text-primary-400 tracking-tight">JobSearch</h1>
+            <h1 className="text-lg font-bold text-primary-600 tracking-tight">JobSearch</h1>
             <p className="text-xs text-text-secondary mt-1">Pipeline Dashboard</p>
           </div>
           <div className="flex flex-col gap-1 p-3 flex-1">
@@ -30,7 +30,7 @@ export default function App() {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     isActive
-                      ? 'bg-primary-600/20 text-primary-400'
+                      ? 'bg-primary-50 text-primary-700'
                       : 'text-text-secondary hover:bg-surface-hover hover:text-text-primary'
                   }`
                 }

@@ -53,7 +53,7 @@ export default function JobDetail() {
 
   return (
     <div className="p-6 max-w-5xl">
-      <Link to="/jobs" className="text-sm text-primary-400 hover:text-primary-300 mb-4 inline-block">
+      <Link to="/jobs" className="text-sm text-primary-600 hover:text-primary-500 mb-4 inline-block">
         ← Back to Jobs
       </Link>
 
@@ -72,7 +72,7 @@ export default function JobDetail() {
           </div>
           <div className="flex flex-col items-end gap-2">
             <div className="text-right">
-              <span className="text-4xl font-bold font-mono text-primary-400">{job.relevance_score}</span>
+              <span className="text-4xl font-bold font-mono text-primary-600">{job.relevance_score}</span>
               <p className={`text-sm font-medium uppercase ${tierColor}`}>{job.tier}</p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function JobDetail() {
 
         <div className="flex flex-wrap gap-2 mt-4">
           {job.search_archetype && (
-            <span className="text-xs bg-primary-600/10 text-primary-300 px-2.5 py-1 rounded-full border border-primary-600/20">
+            <span className="text-xs bg-primary-50 text-primary-700 px-2.5 py-1 rounded-full border border-primary-100">
               {job.search_archetype.replace(/_/g, ' ')}
             </span>
           )}
@@ -113,7 +113,7 @@ export default function JobDetail() {
             {job.matched_negative && (
               <div>
                 <span className="text-xs text-text-secondary uppercase tracking-wider">Negative flags: </span>
-                <span className="text-sm text-red-400">{job.matched_negative}</span>
+                <span className="text-sm text-red-600">{job.matched_negative}</span>
               </div>
             )}
           </div>
@@ -173,13 +173,13 @@ export default function JobDetail() {
 
         {/* Generation result */}
         {resumeResult && (
-          <div className={`mt-4 rounded-xl border p-5 ${resumeResult.success ? 'bg-tier-shortlist/5 border-tier-shortlist/20' : 'bg-red-500/5 border-red-500/20'}`}>
+          <div className={`mt-4 rounded-xl border p-5 ${resumeResult.success ? 'bg-tier-shortlist/5 border-tier-shortlist/20' : 'bg-red-50 border-red-200'}`}>
             <div className="flex items-start gap-3">
-              <span className={`text-lg mt-0.5 ${resumeResult.success ? 'text-tier-shortlist' : 'text-red-400'}`}>
+              <span className={`text-lg mt-0.5 ${resumeResult.success ? 'text-tier-shortlist' : 'text-red-600'}`}>
                 {resumeResult.success ? '✓' : '✗'}
               </span>
               <div className="flex-1">
-                <p className={`font-medium text-sm ${resumeResult.success ? 'text-tier-shortlist' : 'text-red-400'}`}>
+                <p className={`font-medium text-sm ${resumeResult.success ? 'text-tier-shortlist' : 'text-red-600'}`}>
                   {resumeResult.success ? 'Resume & Cover Letter Generated' : 'Generation Failed'}
                 </p>
                 <p className="text-sm text-text-secondary mt-1">{resumeResult.message}</p>
@@ -188,13 +188,13 @@ export default function JobDetail() {
                   <div className="flex flex-wrap gap-2 mt-3">
                     {resumeResult.tex_path && (
                       <a href={`/api/resume/download/${resumeResult.tex_path.split('/').pop()}`}
-                        className="inline-flex items-center gap-1.5 text-xs bg-surface border border-border rounded-lg px-3 py-1.5 text-text-secondary hover:text-text-primary hover:border-primary-500/30 transition-colors">
+                        className="inline-flex items-center gap-1.5 text-xs bg-surface border border-border rounded-lg px-3 py-1.5 text-text-secondary hover:text-text-primary hover:border-primary-300 transition-colors">
                         <span>📄</span> Resume (.tex)
                       </a>
                     )}
                     {resumeResult.pdf_path && (
                       <a href={`/api/resume/download/${resumeResult.pdf_path.split('/').pop()}`}
-                        className="inline-flex items-center gap-1.5 text-xs bg-primary-600/20 border border-primary-600/30 rounded-lg px-3 py-1.5 text-primary-400 hover:bg-primary-600/30 transition-colors">
+                        className="inline-flex items-center gap-1.5 text-xs bg-primary-50 border border-primary-200 rounded-lg px-3 py-1.5 text-primary-600 hover:bg-primary-100 transition-colors">
                         <span>📑</span> Resume (.pdf)
                       </a>
                     )}
@@ -206,7 +206,7 @@ export default function JobDetail() {
                     )}
                     {resumeResult.analysis_path && (
                       <a href={`/api/resume/download/${resumeResult.analysis_path.split('/').pop()}`}
-                        className="inline-flex items-center gap-1.5 text-xs bg-surface border border-border rounded-lg px-3 py-1.5 text-text-secondary hover:text-text-primary hover:border-primary-500/30 transition-colors">
+                        className="inline-flex items-center gap-1.5 text-xs bg-surface border border-border rounded-lg px-3 py-1.5 text-text-secondary hover:text-text-primary hover:border-primary-300 transition-colors">
                         <span>📊</span> JD Analysis (.md)
                       </a>
                     )}
@@ -232,7 +232,7 @@ export default function JobDetail() {
                       <h4 className="text-sm font-medium text-text-secondary">JD Keyword Validation</h4>
                       <span className={`text-lg font-bold font-mono ${
                         resumeResult.validation.coverage_percent >= 80 ? 'text-tier-shortlist' :
-                        resumeResult.validation.coverage_percent >= 60 ? 'text-tier-consider' : 'text-red-400'
+                        resumeResult.validation.coverage_percent >= 60 ? 'text-tier-consider' : 'text-red-600'
                       }`}>
                         {resumeResult.validation.coverage_percent}%
                       </span>
@@ -256,10 +256,10 @@ export default function JobDetail() {
 
                     {resumeResult.validation.missing_keywords.length > 0 && (
                       <div>
-                        <span className="text-xs text-red-400 uppercase tracking-wider">Missing: </span>
+                        <span className="text-xs text-red-600 uppercase tracking-wider">Missing: </span>
                         <div className="flex flex-wrap gap-1 mt-1">
                           {resumeResult.validation.missing_keywords.map((kw) => (
-                            <span key={kw} className="text-xs bg-red-500/10 text-red-400 px-2 py-0.5 rounded-full border border-red-500/20">
+                            <span key={kw} className="text-xs bg-red-50 text-red-600 px-2 py-0.5 rounded-full border border-red-200">
                               {kw}
                             </span>
                           ))}
@@ -276,9 +276,9 @@ export default function JobDetail() {
 
       {/* Analysis / Description */}
       {analysis ? (
-        <div className="bg-surface-card rounded-xl border border-border p-6">
+        <div className="bg-surface-card rounded-xl border border-border p-6 overflow-hidden">
           <h2 className="text-lg font-semibold mb-4">JD Analysis</h2>
-          <div className="prose prose-invert prose-sm max-w-none [&_h1]:text-xl [&_h1]:text-text-primary [&_h2]:text-base [&_h2]:text-primary-400 [&_h2]:mt-6 [&_h2]:mb-2 [&_table]:text-sm [&_th]:text-text-secondary [&_th]:text-left [&_th]:py-1 [&_th]:pr-4 [&_td]:py-1 [&_td]:pr-4 [&_hr]:border-border [&_strong]:text-text-primary [&_a]:text-primary-400 [&_code]:bg-surface [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-primary-300 [&_ul]:space-y-1 [&_ol]:space-y-1 [&_li]:text-text-secondary [&_p]:text-text-secondary">
+          <div className="prose prose-sm max-w-none [&_h1]:text-xl [&_h1]:text-text-primary [&_h2]:text-base [&_h2]:text-primary-600 [&_h2]:mt-6 [&_h2]:mb-2 [&_table]:text-sm [&_th]:text-text-secondary [&_th]:text-left [&_th]:py-1 [&_th]:pr-4 [&_td]:py-1 [&_td]:pr-4 [&_hr]:border-border [&_strong]:text-text-primary [&_a]:text-primary-600 [&_code]:bg-surface [&_code]:px-1 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-primary-700 [&_pre]:overflow-x-auto [&_pre]:bg-surface [&_pre]:p-3 [&_pre]:rounded-lg [&_code]:break-words [&_ul]:space-y-1 [&_ol]:space-y-1 [&_li]:text-text-secondary [&_p]:text-text-secondary [&_p]:break-words">
             <ReactMarkdown>{analysis}</ReactMarkdown>
           </div>
         </div>

@@ -12,16 +12,16 @@
   --color-primary-800: #1e40af;
   --color-primary-900: #1e3a8a;
 
-  --color-tier-shortlist: #10b981;
-  --color-tier-consider: #f59e0b;
+  --color-tier-shortlist: #059669;
+  --color-tier-consider: #d97706;
   --color-tier-discard: #6b7280;
 
-  --color-surface: #0f172a;
-  --color-surface-card: #1e293b;
-  --color-surface-hover: #334155;
-  --color-text-primary: #f1f5f9;
-  --color-text-secondary: #94a3b8;
-  --color-border: #334155;
+  --color-surface: #f1f5f9;
+  --color-surface-card: #ffffff;
+  --color-surface-hover: #e2e8f0;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #64748b;
+  --color-border: #e2e8f0;
 }
 
 body {
@@ -29,6 +29,7 @@ body {
   background: var(--color-surface);
   color: var(--color-text-primary);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 #root {
@@ -42,6 +43,9 @@ body {
   background: var(--color-surface);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
+  background: #cbd5e1;
   border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
