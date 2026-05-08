@@ -33,10 +33,10 @@ export const api = {
   getArchetypes: () => fetchJSON<Record<string, { display_name: string; key: string }>>('/pipeline/archetypes'),
   getBoards: () => fetchJSON<string[]>('/pipeline/boards'),
 
-  generateResume: (jobId: number, archetypeOverride?: string, onePage?: boolean) =>
+  generateResume: (jobId: number, archetypeOverride?: string, onePage?: boolean, provider?: string) =>
     fetchJSON<import('./types').ResumeResponse>('/resume/generate', {
       method: 'POST',
-      body: JSON.stringify({ job_id: jobId, archetype_override: archetypeOverride, one_page: onePage ?? false }),
+      body: JSON.stringify({ job_id: jobId, archetype_override: archetypeOverride, one_page: onePage ?? false, provider: provider ?? 'auto' }),
     }),
 
   listResumes: () => fetchJSON<{

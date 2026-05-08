@@ -11,6 +11,13 @@ const ARCHETYPE_OPTIONS = [
   { key: 'cloud_devops', label: 'Cloud DevOps' },
 ];
 
+const PROVIDER_OPTIONS = [
+  { key: 'auto', label: 'Auto (Claude → Foundry)' },
+  { key: 'claude', label: 'Claude' },
+  { key: 'foundry', label: 'Microsoft Foundry' },
+  { key: 'template', label: 'Template (No AI)' },
+];
+
 export default function JobDetail() {
   const { id } = useParams<{ id: string }>();
   const [job, setJob] = useState<Job | null>(null);
@@ -20,6 +27,7 @@ export default function JobDetail() {
   const [generating, setGenerating] = useState(false);
   const [archetypeOverride, setArchetypeOverride] = useState<string>('');
   const [onePage, setOnePage] = useState(false);
+  const [provider, setProvider] = useState<string>('auto');
 
   useEffect(() => {
     if (!id) return;
@@ -38,7 +46,7 @@ export default function JobDetail() {
     setGenerating(true);
     setResumeResult(null);
     try {
-      const res = await api.generateResume(job.id, archetypeOverride || undefined, onePage);
+      const res = await api.generateResume(job.id, archetypeOverride || undefined, onePage, provider);
       setResumeResult(res);
     } catch (e) {
       setResumeResult({ success: false, message: String(e) });
@@ -143,6 +151,20 @@ export default function JobDetail() {
                   ))}
                 </select>
               </div>
+              <div>
+                <label className="block text-xs text-text-secondary mb-1">Provider</label>
+                <select
+                  value={provider}
+                  onChange={(e) => setProvider(e.target.value)}
+                  aria-label="LLM provider"
+                  title="LLM provider"
+                  className="bg-surface border border-border rounded-lg px-3 py-2 text-sm text-text-primary"
+                >
+                  {PROVIDER_OPTIONS.map((p) => (
+                    <option key={p.key} value={p.key}>{p.label}</option>
+                  ))}
+                </select>
+              </div>
               <label className="flex items-center gap-2 text-sm text-text-secondary cursor-pointer select-none pb-1">
                 <input
                   type="checkbox"
@@ -181,6 +203,11 @@ export default function JobDetail() {
               <div className="flex-1">
                 <p className={`font-medium text-sm ${resumeResult.success ? 'text-tier-shortlist' : 'text-red-600'}`}>
                   {resumeResult.success ? 'Resume & Cover Letter Generated' : 'Generation Failed'}
+                  {resumeResult.provider_used && resumeResult.provider_used !== 'template' && (
+                    <span className="ml-2 text-xs font-normal text-text-secondary">
+                      via {resumeResult.provider_used === 'claude' ? 'Claude' : resumeResult.provider_used === 'foundry' ? 'Foundry' : resumeResult.provider_used}
+                    </span>
+                  )}
                 </p>
                 <p className="text-sm text-text-secondary mt-1">{resumeResult.message}</p>
 

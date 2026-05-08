@@ -73,4 +73,5 @@ export interface ResumeResponse {
   analysis_path?: string;
   message: string;
   validation?: ValidationResult;
+  provider_used?: string;
 }

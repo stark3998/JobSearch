@@ -86,6 +86,7 @@ class ResumeRequest(BaseModel):
     job_id: int
     archetype_override: Optional[str] = None
     one_page: bool = False
+    provider: str = "auto"
 
 
 class ValidationResult(BaseModel):
@@ -103,3 +104,4 @@ class ResumeResponse(BaseModel):
     analysis_path: Optional[str] = None
     message: str = ""
     validation: Optional[ValidationResult] = None
+    provider_used: Optional[str] = None

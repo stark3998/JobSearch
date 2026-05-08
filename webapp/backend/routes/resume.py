@@ -13,6 +13,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse
 
 from ..models import ResumeRequest, ResumeResponse, ValidationResult
+from .. import llm
 
 logger = logging.getLogger(__name__)
 
@@ -737,15 +738,41 @@ def generate_resume(request: ResumeRequest):
     _migrate_flat_archive()
     _archive_existing()
 
-    # Generate tailored .tex
     RESUMES_DIR.mkdir(parents=True, exist_ok=True)
-    tex_content = _build_tex(archetype, one_page=request.one_page)
+    COVER_LETTERS_DIR.mkdir(parents=True, exist_ok=True)
+
+    provider = request.provider or "auto"
+    provider_used = "template"
+    description = str(row.get("description", "")) if pd.notna(row.get("description")) else ""
+
+    if provider == "template":
+        tex_content = _build_tex(archetype, one_page=request.one_page)
+        cl_content = _build_cover_letter(company, title, archetype, location, analysis_content, matched_strong)
+    else:
+        system_prompt, user_prompt = llm.build_prompt(
+            title=title,
+            company=company,
+            location=location,
+            archetype=archetype,
+            one_page=request.one_page,
+            analysis=analysis_content,
+            description=description,
+            matched_strong=matched_strong,
+        )
+        try:
+            provider_used, raw_response = llm.generate(provider, system_prompt, user_prompt)
+            tex_content, cl_content = llm.parse_response(raw_response)
+        except Exception as e:
+            logger.error(f"LLM generation failed: {e}")
+            return ResumeResponse(
+                success=False,
+                message=f"LLM generation failed: {e}",
+                provider_used=provider,
+            )
+
     tex_path = RESUMES_DIR / f"cv_{company_slug}.tex"
     tex_path.write_text(tex_content, encoding="utf-8")
 
-    # Generate cover letter
-    COVER_LETTERS_DIR.mkdir(parents=True, exist_ok=True)
-    cl_content = _build_cover_letter(company, title, archetype, location, analysis_content, matched_strong)
     cl_path = COVER_LETTERS_DIR / f"coverletter_{company_slug}.md"
     cl_path.write_text(cl_content, encoding="utf-8")
 
@@ -766,15 +793,17 @@ def generate_resume(request: ResumeRequest):
     validation = _validate_against_jd(tex_content, analysis_content)
 
     page_label = "1-page" if request.one_page else "2-page"
+    provider_label = f" via {provider_used}" if provider_used != "template" else ""
     return ResumeResponse(
         success=True,
         tex_path=f"Resumes/cv_{company_slug}.tex",
         pdf_path=pdf_path_str,
         cover_letter_path=f"CoverLetters/coverletter_{company_slug}.md",
         analysis_path=f"pipeline_output/analyses/{analysis_file}" if analysis_file else None,
-        message=f"Generated {page_label} tailored resume ({ARCHETYPE_DISPLAY.get(archetype, archetype)}) and cover letter for {title} at {company}."
+        message=f"Generated {page_label} tailored resume ({ARCHETYPE_DISPLAY.get(archetype, archetype)}){provider_label} and cover letter for {title} at {company}."
         + (" PDF compiled." if pdf_path_str else " PDF compilation unavailable (install pdflatex or Docker)."),
         validation=validation,
+        provider_used=provider_used,
     )
 
 
