@@ -1,0 +1,30 @@
+# Pipeline output (raw/filtered CSVs are large and ephemeral)
+pipeline_output/raw/
+pipeline_output/filtered/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+citations.bib
+
+# OS
+.DS_Store
+Thumbs.db

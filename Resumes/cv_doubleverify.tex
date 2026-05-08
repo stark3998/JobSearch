@@ -1,0 +1,158 @@
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,3pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip}
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.95]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+% longtable environment
+\usepackage{longtable}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{ifsym}
+
+%CV Sections inspired by:
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{0pt}{6pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.5}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+    \Huge{Jatin Madan}                                                           \\[10.5pt]
+    \href{https://github.com/stark3998}{\raisebox{-0.05\height}\faGithub\ stark3998} \ $|$ \
+    \href{https://linkedin.com/in/jatin39}{\raisebox{-0.05\height}\faLinkedin\ Jatin39} \ $|$ \
+    \href{https://jatinmadan.com}{\raisebox{-0.05\height}\faGlobe \ jatinmadan.com} \ $|$ \
+    \href{mailto:jatin.madan39@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ jatin.madan39@gmail.com} \ $|$ \
+    \href{tel:+19492139330}{\raisebox{-0.05\height}\faMobile \ +1(949)-213-9330} \\
+\end{tabularx}
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{University of California, Irvine} | Master of Computer Science | GPA: 4.0            & \hfill [Irvine, CA, USA] Sept 2023 - Dec 2024 \\[2pt]
+    \textbf{Vellore Institute of Technology} | B.Tech Computer Science and Engineering & \hfill [Vellore, India] July 2016 - June 2020 \\[2pt]
+\end{tabularx}
+
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+    Languages/Scripts     & \normalsize{\textbf{Python, C\#, PowerShell, Bash,} SQL, Java, JavaScript}\\
+    Security \& DevSecOps & \normalsize{\textbf{CSPM, CWPP, CIEM, SIEM, Zero Trust, IAM/RBAC,} Conditional Access, Vulnerability Management, Defender for Cloud, Sentinel, Purview, CIS, NIST, MCSB}\\
+    Tools/IaC             & \normalsize{\textbf{Terraform, Bicep, Docker, Kubernetes (AKS),} Azure DevOps, Jenkins, GitHub Actions, GHAS}\\
+    Cloud Stack           & \normalsize{\textbf{Azure} (PaaS/IaaS: full stack), \textbf{AWS} (S3, Lambda), Multi-Cloud Security Architecture}\\
+\end{tabularx}
+
+\section{Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Deloitte} | Engineering Manager | \href{https://www.deloitte.com/us/en/offices/us-locations/seattle.html}{Cloud Infra and Security Team | Seattle, WA} & \hfill Jan 2025 - Present \\[3pt]
+    \multicolumn{2}{@{}X@{}}{\begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Architected and deployed \textbf{fully automated IaC solutions} using \textbf{Terraform and Bicep} across \textbf{Azure PaaS and IaaS environments}, enforcing \textbf{enterprise-wide cloud platform standards} for security, cost, and compliance across \textbf{5+ business units and 150K+ users}
+            \item[--] Built and maintained \textbf{CI/CD pipelines} using \textbf{GitHub Actions and Azure DevOps}, integrating \textbf{GitHub Advanced Security (GHAS)} and \textbf{automated IaC compliance scanning} to enforce standardized security tooling across all deployment workflows
+            \item[--] Onboarded \textbf{2,000+ enterprise applications and 120K+ identities} into \textbf{cloud IaC environments}, providing \textbf{technical support at design and operational phases} and resolving cloud configuration, networking, and identity issues within defined SLAs
+            \item[--] Implemented \textbf{cloud monitoring and observability} using \textbf{Azure Monitor, Log Analytics, and Power BI dashboards}, producing \textbf{periodic reports on resource usage, cost trends, and platform performance} to guide strategic architecture decisions
+            \item[--] Contributed to \textbf{continuous CSPM} using \textbf{Terraform IaC scanning, misconfiguration detection, and automated remediation} -- identified gaps through code review and threat modeling, shipped fixes, and maintained \textbf{100\% policy compliance} across multi-cloud production environments
+            \item[--] Led \textbf{cross-functional working groups} across delivery and platform teams, driving \textbf{cloud cost optimization initiatives} and establishing \textbf{secure-by-default IaC guardrails and cloud platform standards}
+        \end{itemize}
+    \end{minipage}}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{ZS Associates} | Associate Consultant Intern | \href{https://www.zs.com/}{Cloud and Big Data Team | Philadelphia, PA} & \hfill Jun 2024 - Aug 2024 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{\begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Overhauled \textbf{ETL workflows} by converting \textbf{3,000 Parquet tables to Delta tables} using \textbf{Apache Spark and Databricks}, leveraging \textbf{Azure Data Factory pipelines} to enhance scalability and cloud platform efficiency
+            \item[--] Designed and published a \textbf{hardened custom Docker image} for Databricks clusters via \textbf{Artifactory}, reducing cluster runtime by \textbf{14\%} by eliminating runtime package installations
+            \item[--] Implemented \textbf{Unity Catalog} in Databricks for \textbf{unified data governance}, using \textbf{Azure Key Vault and ADLS fine-grained access controls} to enforce compliance; produced \textbf{Grafana dashboards} tracking data pipeline health
+        \end{itemize}
+    \end{minipage}}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{University of California, Irvine} | Data \& Tech Fellow | \href{https://odit.uci.edu/about/vc-profile.php}{Prof. Tom Andriola | Irvine, CA} & \hfill Jan 2024 - Dec 2024 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{\begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Engineered \textbf{hybrid cloud infrastructure} using \textbf{Terraform IaC}, deploying \textbf{Application Proxy, Entra ID Connect, F5 load balancing, firewall, and DNS routing} -- troubleshooting cloud networking, configuration, and authentication issues
+            \item[--] Built an \textbf{Apple Vision OS remote development platform} (SwiftUI, SSH, VS Code Server) running on \textbf{Azure-hosted infrastructure}, collaborating with application and platform teams to maintain \textbf{stable cloud environments}
+            \item[--] Produced \textbf{technical documentation and architecture presentations} for stakeholders at all organizational levels, communicating cloud platform design decisions and infrastructure standards
+        \end{itemize}
+    \end{minipage}}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Deloitte} | Cloud Infrastructure Solution Advisor | \href{https://www.deloitte.com/ui/en}{Cloud Infrastructure Team | Gurugram, IN} & \hfill Aug 2020 - Sep 2023 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{\begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Designed and deployed \textbf{fully automated cloud solutions} on Azure (\textbf{VMSS, AKS, App Service, Cosmos DB, Redis Cache, Event Hubs}) using \textbf{Terraform IaC and Azure DevOps pipelines}, supporting enterprise workloads across \textbf{IaaS, PaaS, and SaaS}
+            \item[--] Developed an \textbf{Azure DevOps extension} to \textbf{pre-scan Terraform IaC templates} for misconfigurations and policy violations before deployment, integrating findings into \textbf{Power BI dashboards} for resource trend reporting
+            \item[--] Analyzed \textbf{cloud usage patterns and cost trends} across multi-cloud environments, producing \textbf{periodic reports and Grafana/Power BI dashboards} to guide \textbf{strategic architecture decisions}
+            \item[--] Onboarded enterprise value streams into \textbf{cloud IaC environments}, providing \textbf{technical support at design and operational phases}, troubleshooting \textbf{cloud service, networking, and configuration issues}
+            \item[--] Built \textbf{ETL workflows} with \textbf{Azure Synapse, Azure SQL, and Azure Data Factory}, collaborating cross-functionally with application, infrastructure, and security teams
+        \end{itemize}
+    \end{minipage}}
+\end{tabularx} \\
+
+\section{Certifications \hfill \texorpdfstring{\href{https://github.com/stark3998/\#certifications}{\normalsize{Link to all 11 Certifications}}}{}}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \multicolumn{2}{@{}X@{}}{\begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=2.5pt]
+            \item Microsoft Certified: \textbf{Azure Solutions Architect Expert} \hfill AZ-304 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H693-3978} \hspace{20mm} Feb 21, 2021
+            \item Microsoft Certified: \textbf{DevOps Engineer Expert} \hfill AZ-400 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H813-4148} \hspace{20mm} May 16, 2021
+            \item Microsoft Certified: \textbf{Azure Security Engineer Associate} \hfill AZ-500 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H736-2347} \hspace{20mm} Mar 28, 2021
+            \item Microsoft Certified: \textbf{Azure Network Engineer Associate} \hfill AZ-700 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{I483-3372} \hspace{20mm} Nov 12, 2021
+            \item Microsoft Certified: \textbf{Azure Data Engineer Associate} \hfill DP-203 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{I094-4717} \hspace{20mm} Dec 29, 2021
+        \end{itemize}
+    \end{minipage}}
+\end{tabularx}
+\end{document}

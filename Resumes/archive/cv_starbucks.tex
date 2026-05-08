@@ -1,0 +1,186 @@
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,3pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.95]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+% longtable environment
+\usepackage{longtable}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{ifsym}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{0pt}{6pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.5}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+    \Huge{Jatin Madan}                                                           \\[10.5pt]
+    \href{https://github.com/stark3998}{\raisebox{-0.05\height}\faGithub\ stark3998} \ $|$ \
+    \href{https://linkedin.com/in/jatin39}{\raisebox{-0.05\height}\faLinkedin\ Jatin39} \ $|$ \
+    \href{https://jatinmadan.com}{\raisebox{-0.05\height}\faGlobe \ jatinmadan.com} \ $|$ \
+    \href{mailto:jatin.madan39@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ jatin.madan39@gmail.com} \ $|$ \
+    % \href{https://maps.app.goo.gl/YbKs3GmpJMfMrPKr9}{\textifsymbol{18} \ Irvine,CA,92617} \ $|$ \ 
+    \href{tel:+19492139330}{\raisebox{-0.05\height}\faMobile \ +1(949)-213-9330} \\
+\end{tabularx}
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{University of California, Irvine} | Master of Computer Science | GPA: 4.0            & \hfill [Irvine, CA, USA] Sept 2023 - Dec 2024 \\[2pt]
+    % \multicolumn{2}{@{}X@{}}{
+    % \begin{minipage}[t]{\linewidth}
+    %     \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+    %         \item[--]  Courses: Cyber Security, Parallel and Distributed Computing, AI, Data Structures, Algorithms, Image Processing, ML, DL
+    %     \end{itemize}
+    % \end{minipage}
+    % }                                                                                                                                  \\[2.75pt]
+    \textbf{Vellore Institute of Technology} | B.Tech Computer Science and Engineering & \hfill [Vellore, India] July 2016 - June 2020 \\[2pt]
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+    Languages/Scripts      & \normalsize{\textbf{Python, C\#, ASP .Net, PowerShell,} SQL, HTML, Bash, Java, JavaScript}\\
+    Security Architecture  & \normalsize{\textbf{Threat Modeling, Attack Surface Analysis, Security Architecture Reviews, Reference Architecture Design, Zero Trust, Secure Design Patterns}, API Security, Secrets Management, Encryption, Authentication/Authorization, Pipeline Security, Risk Assessment (NIST, ISO 27001, CSA), MCSB, CIS Benchmarks}\\
+    Cloud \& DevSecOps     & \normalsize{\textbf{Azure, AWS, GCP, Multi-Cloud Security}, Serverless (Azure Functions, AWS Lambda), \textbf{Kubernetes (AKS), Docker, Terraform (IaC)}, Azure DevOps, Jenkins, CI/CD Pipeline Security, CSPM, CWPP, Microsoft Sentinel, Defender for Cloud, Microsoft Purview}\\
+    Tools/Libraries        & \normalsize{Databricks, Postman, Git, PySpark, OpenCV, Pandas, NLTK, Django, Power BI, Vulnerability Management}
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+%Experience
+\section{Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Deloitte} | Engineering Manager | \href{https://www.deloitte.com/us/en/offices/us-locations/seattle.html}{Cloud Infra and Security Team | Seattle, WA} & \hfill Jan 2025 - Present \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Led \textbf{security architecture reviews} across \textbf{complex multi-cloud, multi-tenant, and multi-partner environments}, evaluating platforms and applications against \textbf{NIST, ISO 27001, and CSA frameworks}, producing \textbf{formal risk assessments and design reference architectures} that drove compliance across 5+ business units
+            \item[--] Developed \textbf{reusable reference architectures and secure design patterns} for \textbf{identity modernization, external identity onboarding, and AI governance}, enabling consistent, repeatable security outcomes across \textbf{2,000+ enterprise applications and 120K+ identities} and reducing \textbf{implementation risk by 70\%}
+            \item[--] Conducted \textbf{threat modeling and attack surface analysis} across \textbf{API, identity, serverless, and containerized (AKS) attack vectors}, acting as \textbf{security SME} for engineering and delivery teams during technical design and integrating security requirements into multi-cloud architectures
+            \item[--] Implemented enterprise-wide \textbf{AI security governance frameworks}, including \textbf{red-teaming, model guardrails, Agent365, and policy-driven monitoring} via \textbf{Microsoft Purview and Defender for Cloud}, enabling compliant AI adoption across \textbf{5+ business units} and \textbf{150K+ users}
+            \item[--] Architected and built an \textbf{MCP server} on \textbf{Azure Kubernetes Service} with \textbf{secrets management (Azure Key Vault), API security controls, and private connectivity}, enabling secure \textbf{Microsoft Graph API operations} and reducing \textbf{identity investigation effort by 60\%}
+            \item[--] \textbf{Mentored junior engineers} and led \textbf{cross-functional security working groups} across delivery and platform teams, establishing \textbf{secure-by-default IaC guardrails, CI/CD pipeline patterns, and architecture review standards} adopted across production environments
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{ZS Associates} | Associate Consultant Intern | \href{https://www.zs.com/}{Cloud and Big Data Team | Philadelphia, PA} & \hfill Jun 2024 - Aug 2024 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Performed \textbf{data security architecture review} of a large-scale \textbf{Databricks and Azure Data Lake} environment, identifying \textbf{access control gaps and attack vectors} across 3,000+ Parquet datasets and producing \textbf{formal risk findings} with remediation guidance
+            \item[--] Implemented \textbf{Unity Catalog} in Databricks for \textbf{unified data governance}, applying \textbf{fine-grained access controls, audit logging, and encryption} across \textbf{Azure Data Lake Storage (ADLS)} to enforce least-privilege and compliance requirements
+            \item[--] Designed a \textbf{hardened custom Docker image} for Databricks clusters with \textbf{pre-vetted, security-approved packages}, eliminating runtime installation attack surface and reducing cluster provisioning time by 14\%
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{University of California, Irvine} | Data \& Tech Fellow | \href{https://odit.uci.edu/about/vc-profile.php}{Prof. Tom Andriola | Irvine, CA} & \hfill Jan 2024 - Dec 2024 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Designed and delivered a \textbf{hybrid identity security architecture} with \textbf{Application Proxy, Entra ID Connect, F5 load balancing, firewall, DNS routing, and HRD policies}, producing a \textbf{formal architecture review} and secure design patterns adopted across UCI's enterprise authentication infrastructure
+            \item[--] Conducted \textbf{threat modeling} of the hybrid identity environment, identifying \textbf{authentication attack vectors} including session hijacking, token replay, and lateral movement risks, and translating findings into \textbf{actionable remediation guidance} for platform engineering teams
+            \item[--] Engineered an \textbf{immersive remote development platform} on \textbf{Apple Vision OS} (SwiftUI, SSH, VS Code Server), applying \textbf{secure-by-design principles} across network tunneling, credential management, and sandboxed execution environments
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Deloitte} | Cyber Security Solution Advisor | \href{https://www.deloitte.com/ui/en}{Cloud Infrastructure Team | Gurugram, IN} & \hfill Aug 2020 - Sep 2023 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Built an \textbf{Automated M365 and Multi-Cloud Security Assessment Tool} performing \textbf{formal risk assessments} of cross-tenant resources and identities against \textbf{NIST/CIS frameworks}, producing consistent, documented risk findings and reducing \textbf{manual assessment effort by 78\%}
+            \item[--] Conducted \textbf{security architecture reviews} and provided \textbf{consultative guidance} for \textbf{PaaS database and Kubernetes cluster} deployments, designing \textbf{IAM role structures, RBAC mappings, and identity lifecycle patterns} aligned to least-privilege and Zero Trust principles
+            \item[--] Architected \textbf{Zero Trust reference architectures} within Azure, integrating \textbf{Entra ID governance, conditional access, encryption, secrets management, and network segmentation} as reusable \textbf{secure design patterns} for enterprise adoption
+            \item[--] Led \textbf{threat modeling sessions} for Azure-based platforms including a \textbf{Video Conferencing Platform} (VMSS, App Service, Cosmos DB) and \textbf{Secure SSO System} (Redis Cache, Application Gateway), identifying \textbf{authentication, API, and network attack vectors} at each design stage
+            \item[--] Developed an \textbf{Azure DevOps extension} to pre-scan \textbf{Terraform IaC templates} for \textbf{security misconfigurations, attack vectors, and policy violations} before deployment, integrating findings into \textbf{Power BI dashboards} for risk tracking and executive reporting
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx} \\
+\section{Certifications \hfill \texorpdfstring{\href{https://github.com/stark3998/\#certifications}{\normalsize{Link to all 11 Certifications}}}{}}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=2.5pt]
+            \item Microsoft Certified: \textbf{Azure Security Engineer Associate} \hspace{10mm} AZ-500 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H736-2347} \hspace{20mm} Mar 28, 2021
+            \item Microsoft Certified: \textbf{Azure Solutions Architect Expert} \hspace{11.5mm} AZ-304 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H693-3978} \hspace{20mm} Feb 21, 2021
+            \item Microsoft Certified: \textbf{DevOps Engineer Expert} \hspace{24mm} AZ-400 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H813-4148} \hspace{20mm} May 16, 2021
+            \item Microsoft Certified: \textbf{Azure Developer Associate} \hspace{22mm} AZ-204 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H717-3092} \hspace{20mm} Mar 13, 2021
+            \item Microsoft Certified: \textbf{Azure AI Fundamentals} \hspace{30.5mm} AI-900 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{I094-4717} \hspace{20mm} Dec 2021
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+\end{document}

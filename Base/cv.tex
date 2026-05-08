@@ -1,0 +1,203 @@
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,3pt]{article}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.95]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+% longtable environment
+\usepackage{longtable}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec}				
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{ifsym}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{0pt}{6pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.5}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------------------------
+%	BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{}}
+    \Huge{Jatin Madan}                                                           \\[10.5pt]
+    \href{https://github.com/stark3998}{\raisebox{-0.05\height}\faGithub\ stark3998} \ $|$ \
+    \href{https://linkedin.com/in/jatin39}{\raisebox{-0.05\height}\faLinkedin\ Jatin39} \ $|$ \
+    \href{https://jatinmadan.com}{\raisebox{-0.05\height}\faGlobe \ jatinmadan.com} \ $|$ \
+    \href{mailto:jatin.madan39@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ jatin.madan39@gmail.com} \ $|$ \
+    % \href{https://maps.app.goo.gl/YbKs3GmpJMfMrPKr9}{\textifsymbol{18} \ Irvine,CA,92617} \ $|$ \ 
+    \href{tel:+19492139330}{\raisebox{-0.05\height}\faMobile \ +1(949)-213-9330} \\
+\end{tabularx}
+%----------------------------------------------------------------------------------------
+%	EDUCATION
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{University of California, Irvine} | Master of Computer Science | GPA: 4.0            & \hfill [Irvine, CA, USA] Sept 2023 - Dec 2024 \\[2pt]
+    % \multicolumn{2}{@{}X@{}}{
+    % \begin{minipage}[t]{\linewidth}
+    %     \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=1pt]
+    %         \item[--]  Courses: Cyber Security, Parallel and Distributed Computing, AI, Data Structures, Algorithms, Image Processing, ML, DL
+    %     \end{itemize}
+    % \end{minipage}
+    % }                                                                                                                                  \\[2.75pt]
+    \textbf{Vellore Institute of Technology} | B.Tech Computer Science and Engineering & \hfill [Vellore, India] July 2016 - June 2020 \\[2pt]
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%	SKILLS
+%----------------------------------------------------------------------------------------
+\section{Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+    Languages/Scripts & \normalsize{\textbf{Python, C\#, ASP .Net, Powershell,} SQL, HTML, Bash, JAVA, Javascript}\\
+    Tools/Libraries   & \normalsize{\textbf{Kubernetes, Docker, Databricks, Terraform}, Postman, Azure DevOps, AWS S3, Lambda, Azure Cloud, YAML, Git, Jenkins, PySpark, \textbf{OpenCV, Numpy, Pandas}, NLTK, Django, Vulnerability Management}\\
+    Cloud Stack       & \normalsize{\textbf{Azure PaaS}(Storage Accounts/Function Apps/Web Apps/Event Hubs/Service Bus/Log Analytics}, \textbf{Azure IaaS} (Virtual Machine/ Virtual Machine Scale Set/ Azure Kubernetes/Container Instances, SQL Servers)
+    % Operating Systems &  \normalsize{Windows, Ubuntu, Kali, Mac, Arduino, Raspberry Pi, Samsung Tizen, LG Web OS}\\
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% EXPERIENCE SECTIONS
+%----------------------------------------------------------------------------------------
+%Experience
+\section{Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Deloitte} | Senior Consultant | \href{https://www.deloitte.com/us/en/offices/us-locations/seattle.html}{Cloud Infra and Security Team | Seattle, WA} & \hfill Jan 2025 - Present \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+\item[--] Developed \textbf{IDP migration accelerators} to replicate \textbf{applications, users, groups, and policies} across \textbf{Entra ID and External ID tenants}, accelerating \textbf{identity modernization timelines by 76\%}, reducing \textbf{manual migration effort by 70\%}, and improving \textbf{deployment consistency across environments}
+
+\item[--] Led \textbf{Okta-to-Microsoft Entra ID migration} for \textbf{2,000+ enterprise applications and 120K+ identities}, implementing \textbf{Power BI governance dashboards and SharePoint reporting}, improving \textbf{executive visibility} and reducing \textbf{migration tracking effort by 50\%}
+
+\item[--] Implemented enterprise-wide \textbf{AI security, governance, and compliance frameworks}, including \textbf{red-teaming agents, Agent365, model guardrails, and policy-driven monitoring} for \textbf{Copilot Studio, Microsoft Foundry, Purview}, reducing \textbf{AI security risks by 45\%} and enabling \textbf{compliant AI adoption across 5+ business units}
+
+\item[--] Spearheaded rollout of \textbf{Microsoft Entra External ID} with \textbf{JIT migration, MFA, Native Authentication, WAF, monitoring, and alerting}, enabling \textbf{secure external identity onboarding for 50K+ users} and reducing \textbf{authentication-related security incidents by 35\%}
+
+\item[--] Architected and built a \textbf{MCP server} integrated with \textbf{Azure Kubernetes Service} to enable secure \textbf{Microsoft Graph API operations}, and developed a \textbf{Copilot agent} for real-time \textbf{Entra ID queries}, reducing \textbf{identity investigation and administrative effort by 60\%} and accelerating \textbf{incident response time by 2x}
+
+\item[--] Led development and deployment of \textbf{AI-driven enterprise workflows} and \textbf{Copilot agents} for \textbf{150K+ active users} across \textbf{SharePoint, Outlook, and Teams} reducing \textbf{manual operational effort by 40\%} and improving \textbf{response time by 3x}
+\end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+            % \item[--] Architected \textbf{Azure Policy and AI configuration controls} for \textbf{Copilot Studio, Microsoft Foundry, Purview, Teams, and Agent365}, achieving \textbf{100\% policy compliance} across \textbf{production AI environments} and reducing \textbf{misconfiguration risks by 50\%}
+            % \item[--] Implemented comprehensive \textbf{AI security controls, governance, and compliance frameworks}, including \textbf{red-teaming agents, Agent 365, model/agent guardrails}, and policy-driven monitoring to ensure safe and compliant AI deployment
+            % \item[--] Built a \textbf{MCP server} integrated with \textbf{Azure Cloud} to enable secure \textbf{MS Graph API operations}, and developed a \textbf{Copilot agent} that allows enterprise users to run \textbf{Entra ID queries} quickly and securely, streamlining identity management workflows.
+            % \item[--] Developed and deployed \textbf{AI-driven enterprise workflows} and \textbf{agents} for \textbf{150K active users} across \textbf{SharePoint, Outlook, and Teams}, including a \textbf{self-hosted OpenAI chatbot} using \textbf{Azure Kubernetes Service, Azure Cognitive Services, and Azure Storage} to enable secure, compliant automation
+            % \item[--] Architected \textbf{Azure Policy} and \textbf{AI configuration controls} for \textbf{Copilot Studio, Microsoft Foundry, Purview, Teams, and Agent365} to secure agentic workflows
+            % \item[--] Led \textbf{Okta-to-Microsoft Entra migration} for \textbf{2,000+ applications}, implementing \textbf{Power BI dashboards} and \textbf{SharePoint reporting} for executive governance
+            % \item[--] Rolled out \textbf{Microsoft Entra External ID} with \textbf{JIT User migration, MFA, Native Authentication, WAF, monitoring, and alerting} for enterprise users
+            % \item[--] Developed \textbf{IDP migration accelerators} to copy \textbf{applications, users, groups, and policies} across \textbf{Entra ID and External ID tenants}, streamlining identity modernization, improving migration timelines reducing and operational efforts by 76\%. 
+            % \item[--] Designed and deployed \textbf{AI-driven enterprise workflow automation} using \textbf{Copilot Studio} and \textbf{Microsoft Foundry}, supporting \textbf{150K active users} across \textbf{SharePoint, Outlook, and Teams}
+            % \item[--] Implemented \textbf{AI security controls}, including \textbf{red-teaming agents, Agent 365, and model/agent guardrails} to ensure safe and compliant AI deployment
+
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{ZS Associates} | (Associate Consultant Intern) | \href{https://www.zs.com/}{Cloud and Big Data Team | Philadelphia, PA} & \hfill Jun 2024 - Aug 2024 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] ETL Workflow Overhaul: Converted \textbf{3000 Parquet tables to Delta tables} using \textbf{Apache Spark and Databricks}, leveraging Delta's ACID transactions, scalable metadata handling, and batch data processing to enhance data management efficiency
+            % enhancing data management efficiency with Delta Lake's features.
+            \item[--] Built a \textbf{custom Docker image} for Databricks clusters with preinstalled custom packages, reducing cluster run time by 14\% by avoiding runtime installations.
+            \item[--] Implemented \textbf{Unity Catalog} in Databricks for unified governance, utilizing Azure Data Lake Storage (ADLS) for secure and compliant data management through fine-grained access controls and audit logging.
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{University of California, Irvine} | (Data \& Tech Fellow) | \href{https://odit.uci.edu/about/vc-profile.php}{Prof. Tom Andriola | Irvine, CA} & \hfill Jan 2024 - Dec 2024 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Engineered \textbf{hybrid identity infrastructure} with \textbf{Application Proxy, Entra ID Connect, F5 load balancing, firewall, DNS routing, and HRD policies} for seamless authentication
+        \end{itemize}
+    \end{minipage}
+    } 
+    \end{tabularx}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \textbf{Deloitte} | Cyber Security Solution Advisor | \href{https://www.deloitte.com/ui/en}{Cloud Infrastructure Team | Gurugram, IN} & \hfill Aug 2020 - Sep 2023 \\[3pt]
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+            \item[--] Engineered an \textbf{Automated M365 and Multi-Cloud Security Assessment Tool} to evaluate cross-tenant resources and identities against \textbf{NIST/CIS} frameworks, reducing manual efforts by 78\% and improving risk detection by 35\%
+            \item[--] Overhauled \textbf{Identity and Access Management} for PaaS \textbf{Databases and Kubernetes Clusters}, automating \textbf{Azure AD group} creation and mapping to RBAC roles based on custom configuration rules
+            \item[--] Architected and deployed \textbf{Zero Trust security} within \textbf{Azure}, integrating \textbf{Azure AD/Entra ID governance, RBAC, identity lifecycle management, and conditional access policies} to enforce access control and compliance
+            % \item[--] \textbf{Established Industry Standards and Compliance Framework}, including \textbf{Cloud Governance processes, standard operating procedures, and RACI matrices} for cloud adoption and security adherence
+            \item[--] Designed and implemented \textbf{Azure-based solutions}, including a \textbf{Video Conferencing Platform} (VMSS, App Service, Cosmos DB) and a \textbf{Secure SSO System} (App Service, Redis Cache, Application Gateway)
+            \item[--] Built \textbf{ETL workflows} with \textbf{Azure Synapse} and \textbf{Azure SQL} for enterprise data analysis and \textbf{Power BI dashboards}, and developed an \textbf{Azure DevOps extension} to pre-scan \textbf{Terraform templates} for compliance and security
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx} \\
+\section{Certifications \hfill \href{https://github.com/stark3998/\#certifications}{\normalsize{Link to all Certifications}}}
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+    \multicolumn{2}{@{}X@{}}{
+    \begin{minipage}[t]{\linewidth}
+        \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=2.5pt]
+            \item Microsoft Certified: Azure Security Engineer Associate \hspace{10mm} AZ-500 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H736-2347} \hspace{20mm} Mar 28, 2021
+            % \item Microsoft Certified: Azure Developer Associate	 \hspace{22mm} AZ-204 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H717-3092} \hspace{20mm} Mar 13, 2021
+            \item Microsoft Certified: Azure Solutions Architect Expert \hspace{11.5mm} AZ-304 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H693-3978} \hspace{20mm} Feb 21, 2021
+            \item Microsoft Certified: DevOps Engineer Expert \hspace{24mm} AZ-400 \hspace{25mm} \href{https://github.com/stark3998/\#certifications}{H813-4148} \hspace{20mm} May 16, 2021
+                  % \item Microsoft Certified: Azure Network Engineer Associate \hspace{9.2mm} AZ-700 \hspace{25mm} \href{https://github.com/stark3998/#certifications}{I483-3372} \hspace{22mm} Nov 12, 2021
+                  % \item Microsoft Certified: Azure Database Administrator Associate \hspace{0.2mm} DP-300 \hspace{25mm} I094-4717	 \hspace{20mm} Dec 29, 2021
+        \end{itemize}
+    \end{minipage}
+    }
+\end{tabularx}
+\end{document}

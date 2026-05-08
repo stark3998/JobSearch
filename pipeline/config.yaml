@@ -1,0 +1,227 @@
+# JobSpy Pipeline Configuration
+# All tunable parameters for the scrape -> filter -> analyze pipeline
+
+archetypes:
+  cloud_security:
+    display_name: "Cloud Security Engineering"
+    search_terms:
+      default:
+        - '"cloud security engineer"'
+        - '"senior security engineer" cloud'
+        - '"cloud security" engineer -junior -intern -hardware'
+        - '"security engineer" Azure Kubernetes'
+        - '"CSPM" OR "CWPP" engineer'
+      google:
+        - "senior cloud security engineer jobs near {location} since yesterday"
+        - "cloud security engineer Azure Kubernetes jobs near {location} since last week"
+    claude_archetype: "Cloud Security Engineering"
+    skills_template: "cloud_security"
+
+  security_architecture:
+    display_name: "Security Architecture"
+    search_terms:
+      default:
+        - '"security architect" -junior -intern'
+        - '"cybersecurity architect"'
+        - '"senior security architect" cloud'
+        - '"security architecture" "threat modeling"'
+      google:
+        - "senior security architect cloud jobs near {location} since yesterday"
+    claude_archetype: "Security Architecture"
+    skills_template: "security_architecture"
+
+  software_security:
+    display_name: "Software Security Engineering"
+    search_terms:
+      default:
+        - '"software security engineer"'
+        - '"application security engineer" -junior -intern'
+        - '"product security engineer"'
+        - '"security engineer" Python Kubernetes -hardware'
+        - '"DevSecOps engineer" senior'
+      google:
+        - "senior software security engineer jobs near {location} since yesterday"
+        - "application security engineer jobs near {location} since last week"
+    claude_archetype: "Software Security Engineering"
+    skills_template: "software_security"
+
+  cloud_devops:
+    display_name: "Cloud DevOps / Platform Engineering"
+    search_terms:
+      default:
+        - '"cloud devops engineer" senior'
+        - '"platform engineer" cloud Kubernetes -junior'
+        - '"site reliability engineer" cloud -junior -intern'
+        - '"DevOps engineer" Azure OR GCP Terraform'
+        - '"infrastructure engineer" Kubernetes Terraform'
+      google:
+        - "senior cloud devops platform engineer jobs near {location} since yesterday"
+        - "senior site reliability engineer cloud jobs near {location} since last week"
+    claude_archetype: "Cloud DevOps / Platform Engineering"
+    skills_template: "cloud_devops"
+
+locations:
+  - name: "Seattle, WA"
+    is_home: true
+  - name: "San Francisco, CA"
+  - name: "Los Angeles, CA"
+  - name: "New York, NY"
+  - name: "Austin, TX"
+  - name: "Denver, CO"
+  - name: "Boston, MA"
+
+include_remote: true
+
+boards:
+  - indeed
+  - linkedin
+  - google
+  - zip_recruiter
+  - glassdoor
+
+board_settings:
+  indeed:
+    country: "USA"
+    results_wanted: 50
+  linkedin:
+    results_wanted: 25
+    fetch_description: true
+    delay: 5
+  google:
+    results_wanted: 30
+  zip_recruiter:
+    results_wanted: 30
+  glassdoor:
+    results_wanted: 30
+
+# Add proxies for LinkedIn rate limiting: ["user:pass@host:port"]
+proxies: []
+
+scrape:
+  hours_old: 72
+  description_format: "markdown"
+  verbose: 1
+  delay_between_searches: 2
+
+scoring:
+  strong_positive:
+    - "cloud security"
+    - "security engineer"
+    - "security architect"
+    - "devsecops"
+    - "iam"
+    - "rbac"
+    - "identity"
+    - "zero trust"
+    - "cspm"
+    - "cwpp"
+    - "ciem"
+    - "threat modeling"
+    - "azure"
+    - "kubernetes"
+    - "aks"
+    - "entra id"
+    - "entra"
+    - "terraform"
+    - "ci/cd"
+    - "github actions"
+    - "docker"
+    - "python"
+    - "engineering manager"
+    - "platform engineer"
+    - "infrastructure security"
+    - "workload identity"
+    - "secrets management"
+    - "sentinel"
+    - "defender for cloud"
+    - "supply chain"
+    - "oidc"
+    - "oauth"
+
+  moderate_positive:
+    - "aws"
+    - "gcp"
+    - "google cloud"
+    - "siem"
+    - "sast"
+    - "dast"
+    - "devops"
+    - "powershell"
+    - "bash"
+    - "linux"
+    - "containers"
+    - "microservices"
+    - "api security"
+    - "network security"
+    - "encryption"
+    - "compliance"
+    - "nist"
+    - "iso 27001"
+    - "cis"
+    - "incident response"
+    - "vulnerability management"
+    - "agile"
+    - "scrum"
+    - "bicep"
+    - "azure devops"
+    - "grafana"
+    - "datadog"
+    - "dynatrace"
+    - "databricks"
+    - "key vault"
+    - "conditional access"
+    - "penetration testing"
+    - "code review"
+    - "saml"
+    - "sre"
+    - "site reliability"
+    - "helm"
+    - "jenkins"
+    - "artifactory"
+    - "power bi"
+
+  negative:
+    - "ts/sci"
+    - "top secret"
+    - "sci clearance"
+    - "polygraph"
+    - "hardware security"
+    - "embedded systems"
+    - "asic"
+    - "chip design"
+    - "fpga"
+    - "15+ years"
+    - "20+ years"
+    - "junior"
+    - "intern"
+    - "entry-level"
+    - "entry level"
+    - "new grad"
+    - "0-2 years"
+    - "mainframe"
+    - "cobol"
+
+thresholds:
+  shortlist_min_score: 15
+  consider_min_score: 8
+  discard_below: 4
+
+level_filter:
+  - "senior"
+  - "lead"
+  - "staff"
+  - "principal"
+  - "manager"
+  - "director"
+  - "mid_senior_level"
+  - "sr"
+  - "ii"
+  - "iii"
+
+salary_floor: 120000
+
+output:
+  raw_dir: "pipeline_output/raw"
+  filtered_dir: "pipeline_output/filtered"
+  analysis_dir: "pipeline_output/analyses"
+  summary_file: "pipeline_output/summary.md"
